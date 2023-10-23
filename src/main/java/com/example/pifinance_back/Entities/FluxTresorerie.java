@@ -5,8 +5,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -23,6 +21,6 @@ public class FluxTresorerie implements Serializable {
     private double cout_investi;
     @ManyToOne
     @JsonIgnore
-    private PojetInvestissement projetInvestissement;
+    private ProjetInvestissement projetInvestissement;
 
 }

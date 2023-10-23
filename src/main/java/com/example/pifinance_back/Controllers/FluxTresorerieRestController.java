@@ -1,9 +1,7 @@
 package com.example.pifinance_back.Controllers;
 
 import com.example.pifinance_back.Entities.FluxTresorerie;
-import com.example.pifinance_back.Entities.Formation;
-import com.example.pifinance_back.Entities.PojetInvestissement;
-import com.example.pifinance_back.Repositories.ProjetInvestissementRepository;
+import com.example.pifinance_back.Entities.ProjetInvestissement;
 import com.example.pifinance_back.Services.FluxTresorerieService;
 import com.example.pifinance_back.Services.ProjetInvestissementService;
 import lombok.AllArgsConstructor;
@@ -24,7 +22,7 @@ public class FluxTresorerieRestController {
     }
     @PostMapping("/add/{id}")
     FluxTresorerie AddFluxTresorerie(@RequestBody FluxTresorerie fluxTresorerie,@PathVariable("id") int idProjet){
-        PojetInvestissement projet= projetInvestissementService.retrievePojetInvestissement(idProjet);
+        ProjetInvestissement projet= projetInvestissementService.retrievePojetInvestissement(idProjet);
         fluxTresorerie.setRevenu(projet.getTaux_interet()*fluxTresorerie.getCout_investi()* fluxTresorerie.getPeriode_investissement());
         projet.setCout_initial(projet.getCout_initial()- fluxTresorerie.getCout_investi());
     return fluxTresorerieService.addFluxTresorerie(fluxTresorerie,idProjet);

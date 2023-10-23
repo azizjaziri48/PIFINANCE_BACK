@@ -1,8 +1,7 @@
 package com.example.pifinance_back.Services;
 
 import com.example.pifinance_back.Entities.FluxTresorerie;
-import com.example.pifinance_back.Entities.Formation;
-import com.example.pifinance_back.Entities.PojetInvestissement;
+import com.example.pifinance_back.Entities.ProjetInvestissement;
 import com.example.pifinance_back.Repositories.FluxTresorerieRepository;
 import com.example.pifinance_back.Repositories.ProjetInvestissementRepository;
 import lombok.AllArgsConstructor;
@@ -17,7 +16,7 @@ public class FluxTresorerieServiceImpl implements FluxTresorerieService{
 
     @Override
     public FluxTresorerie addFluxTresorerie(FluxTresorerie fluxTresorerie, int projetid) {
-        PojetInvestissement projetInvestissement =projetInvestissementRepository.findById(projetid).get();
+        ProjetInvestissement projetInvestissement =projetInvestissementRepository.findById(projetid).get();
         fluxTresorerie.setProjetInvestissement(projetInvestissement);
         fluxTresorerieRepository.save(fluxTresorerie);
         return fluxTresorerie;
@@ -35,7 +34,7 @@ public class FluxTresorerieServiceImpl implements FluxTresorerieService{
 
     @Override
     public FluxTresorerie updateFluxTresorerie(FluxTresorerie fluxTresorerie, int projetid) {
-        PojetInvestissement pi =projetInvestissementRepository.findById(projetid).get();
+        ProjetInvestissement pi =projetInvestissementRepository.findById(projetid).get();
         fluxTresorerie.setProjetInvestissement(pi);
         return  fluxTresorerieRepository.save(fluxTresorerie);
     }

@@ -44,4 +44,19 @@ public class SupportPServiceImpl implements SupportPService{
         return supportPRepository.findByType(type);
     }
 
+    @Override
+    public Long countByTypeVideo() {
+        return supportPRepository.countByTypeVideo();
+    }
+
+    @Override
+    public Long countByTypeLivre() {
+        return supportPRepository.countByTypeLivre();
+    }
+
+    @Override
+    public Long countByTypeArticle() {
+        return supportPRepository.countByTypeArticle();
+    }
+
 }

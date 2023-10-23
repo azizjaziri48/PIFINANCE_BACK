@@ -1,6 +1,6 @@
 package com.example.pifinance_back.Services;
 
-import com.example.pifinance_back.Entities.PojetInvestissement;
+import com.example.pifinance_back.Entities.ProjetInvestissement;
 import com.example.pifinance_back.Repositories.ProjetInvestissementRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,12 +12,12 @@ import java.util.List;
 public class ProjetInvestissementServiceImpl implements ProjetInvestissementService{
     private ProjetInvestissementRepository projetInvestissementRepository;
     @Override
-    public PojetInvestissement addProjetInvestissement(PojetInvestissement pojetInvestissement) {
-        LocalDate d1 = pojetInvestissement.getDate_debut();
-        LocalDate d2 =pojetInvestissement.getDate_fin();
+    public ProjetInvestissement addProjetInvestissement(ProjetInvestissement projetInvestissement) {
+        LocalDate d1 = projetInvestissement.getDate_debut();
+        LocalDate d2 = projetInvestissement.getDate_fin();
         LocalDate d = LocalDate.now();
         if (d1.isAfter(d)&& d2.isAfter(d1)) {
-            projetInvestissementRepository.save(pojetInvestissement);
+            projetInvestissementRepository.save(projetInvestissement);
         } else {
             if (!d1.isAfter(d)) {
                 throw new IllegalArgumentException("La date de début doit être supérieure à la date d'aujourd'hui.");
@@ -30,7 +30,7 @@ public class ProjetInvestissementServiceImpl implements ProjetInvestissementServ
     }
 
     @Override
-    public List<PojetInvestissement> retrieveAllPojetInvestissement() {
+    public List<ProjetInvestissement> retrieveAllPojetInvestissement() {
         return projetInvestissementRepository.findAll();
     }
 
@@ -40,12 +40,17 @@ public class ProjetInvestissementServiceImpl implements ProjetInvestissementServ
     }
 
     @Override
-    public PojetInvestissement updatePojetInvestissement(PojetInvestissement pojetInvestissement) {
-        return projetInvestissementRepository.save(pojetInvestissement);
+    public ProjetInvestissement updatePojetInvestissement(ProjetInvestissement projetInvestissement) {
+        return projetInvestissementRepository.save(projetInvestissement);
     }
 
     @Override
-    public PojetInvestissement retrievePojetInvestissement(int idProjetInvestissement) {
+    public ProjetInvestissement retrievePojetInvestissement(int idProjetInvestissement) {
         return projetInvestissementRepository.findById(idProjetInvestissement).orElse(null);
+    }
+
+    @Override
+    public List<ProjetInvestissement> retrieveProjetByLcocalisation(String localisation) {
+        return projetInvestissementRepository.findByLocalisation(localisation);
     }
 }

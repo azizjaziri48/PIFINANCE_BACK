@@ -11,4 +11,13 @@ public interface SupportPRepository extends JpaRepository<SupportP,Integer> {
     @Query("select s from SupportP s where s.Type = ?1")
     List<SupportP> findByType(Type Type);
 
+    @Query("select count(s) from SupportP s where s.Type ='VIDEO' ")
+    Long countByTypeVideo();
+
+    @Query("select count(s) from SupportP s where s.Type ='LIVRE' ")
+    Long countByTypeLivre();
+    @Query("select count(s) from SupportP s where s.Type ='ARTICLE' ")
+    Long countByTypeArticle();
+
+
 }

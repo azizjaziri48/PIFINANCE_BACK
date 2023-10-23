@@ -42,5 +42,19 @@ public class SupportPRestController {
     @GetMapping("/getpartype/{type}")
     public List<SupportP> retrieveSupportPpartype(@PathVariable("type") Type type) {
         return supportPService.TrierSupportparType(type);}
+    @GetMapping("/getTypeVideo")
+    public Long countByTypeVideo() {
+        return supportPService.countByTypeVideo();
+    }
+
+    @GetMapping("/getTypeLivre")
+    public Long countByTypeLivre() {
+        return supportPService.countByTypeLivre();
+    }
+
+    @GetMapping("/getTypeArticle")
+    public Long countByTypeArticle() {
+        return supportPService.countByTypeArticle();
+    }
 
 }

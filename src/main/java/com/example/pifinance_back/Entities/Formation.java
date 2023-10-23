@@ -1,14 +1,13 @@
 package com.example.pifinance_back.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.annotation.Generated;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -27,5 +26,4 @@ private LocalDate date_debut;
 private LocalDate date_fin;
 private int capacite;
 private String organisateur;
-
 }
