@@ -1,6 +1,7 @@
 package com.example.pifinance_back.Repositories;
 
 import com.example.pifinance_back.Entities.Client;
+import com.example.pifinance_back.Entities.ClientFormationDTO;
 import com.example.pifinance_back.Entities.UserEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -24,5 +25,9 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
     Client findByName(String customerName);
     @Query("SELECT c FROM Client c WHERE c.id = :id AND c.pwd_user IS NOT NULL")
     Optional<Client> findClientWithPassword(@Param("id") Long id);
+
+    List<Client> findByFormations_Id(int id);
+
+
 
 }

@@ -26,4 +26,8 @@ private LocalDate date_debut;
 private LocalDate date_fin;
 private int capacite;
 private String organisateur;
+
+@ManyToMany(mappedBy="formations",cascade = CascadeType.ALL)
+@JsonIgnore
+private Set<Client> clients;
 }
